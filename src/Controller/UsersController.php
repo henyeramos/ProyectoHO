@@ -13,7 +13,7 @@ class UsersController extends AppController
 	public function isAuthorized($user)
 	{
 		if (isset($user['isAdmin']) and $user['isAdmin'] === 0) {
-			if (in_array($this->request->action, ['home', 'logout'])) {
+			if (in_array($this->request->action, ['home', 'logout', 'view'])) {
 				return true;
 			}			
 		}
@@ -87,6 +87,12 @@ class UsersController extends AppController
 
 		//Para mandar la nueva entidad para crear el formulario
 		$this->set(compact('users'));
+	}
+
+	public function view($id)
+	{
+		$user = $this->Users->get($id);
+		$this->set('user', $user);
 	}
 
 	public function prohibido()

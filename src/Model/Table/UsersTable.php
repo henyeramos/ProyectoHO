@@ -92,8 +92,7 @@ class UsersTable extends Table
     public function findAuth(Cake\ORM\Query $query, array $options)
     {
         $query
-            ->select(['id_user', 'per_nombre','username', 'password', 'isAdmin', 'user_cedula'])
-            ->where(['per_cedula' => 'user_cedula']);
+            ->select(['id_user','username', 'password', 'isAdmin', 'user_cedula']);
 
         return $query;
     }
