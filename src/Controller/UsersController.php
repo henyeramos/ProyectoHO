@@ -10,6 +10,14 @@ use App\Controller\AppController;
  */
 class UsersController extends AppController
 {
+	public function beforeFilter(\Cake\Event\Event $event) {
+			parent::beforeFilter($event);
+
+			$this->Auth->allow(['add']);
+		}
+	
+
+
 	public function isAuthorized($user)
 	{
 		if (isset($user['isAdmin']) and $user['isAdmin'] === 0) {
@@ -71,17 +79,19 @@ class UsersController extends AppController
 			//Para validar correctamente los datos
 			$users = $this->Users->patchEntity($users, $this->request->data);
 
+			$users->isAdmin = 0;
+
 			//$this->Persona->save($users) es el que se encarga de registrar en la base de datos
 			if ($this->Users->save($users)) 
 			{
 				//Lanzar mensaje de exito
 				$this->Flash->success('Registro exitoso.');
-				return $this->redirect(['controller' => 'Users', 'action' => 'add']);
+				return $this->redirect(['controller' => 'Users', 'action' => 'login']);
 			}
 			else
 			{
 				//Lanzar mensaje de rror
-				$this->Flash->success('Ha ocurrido un error durante el registro. Intente de nuevo.');
+				$this->Flash->error('Ha ocurrido un error durante el registro. Intente de nuevo.');
 			}
 		}
 

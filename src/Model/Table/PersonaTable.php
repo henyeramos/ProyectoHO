@@ -30,11 +30,6 @@ class PersonaTable extends Table
     {
         parent::initialize($config);
 
-        $this->belongsTo('Users', [
-            'foreignKey' => 'user_cedula',
-            'joinType' => 'INNER',
-        ]);
-
         $this->table('persona');
         $this->displayField('per_cedula');
         $this->primaryKey('per_cedula');

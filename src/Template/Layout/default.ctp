@@ -35,7 +35,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 </head>
 <body>
 
-    <!-- <?= $this->element('menu'); ?> -->
+    <?= $this->element('menu'); ?>
 
     <?= $this->Flash->render() ?>
     <div class="container-fluid clearfix">

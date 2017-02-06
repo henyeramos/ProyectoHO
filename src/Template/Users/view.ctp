@@ -1,4 +1,3 @@
-<?= $this->element('menu'); ?>
 <div class="well">
 	<h2></h2>
 	<br>

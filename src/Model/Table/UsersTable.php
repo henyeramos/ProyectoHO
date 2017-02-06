@@ -30,13 +30,6 @@ class UsersTable extends Table
     {
         parent::initialize($config);
 
-
-        $this->hasOne('Persona', [
-                'className' => 'Persona',
-                'foreignKey' => 'user_cedula',
-                'finder' => 'auth'
-            ]);
-
         $this->table('users');
         $this->displayField('id_user');
         $this->primaryKey('id_user');
@@ -89,7 +82,7 @@ class UsersTable extends Table
         return $rules;
     }
 
-    public function findAuth(Cake\ORM\Query $query, array $options)
+    public function findAuth(\Cake\ORM\Query $query, array $options)
     {
         $query
             ->select(['id_user','username', 'password', 'isAdmin', 'user_cedula']);
