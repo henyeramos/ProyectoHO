@@ -1,0 +1,67 @@
+body {
+  background-image: url("../img/ps_neutral.png");
+  background-repeat: repeat;
+  font-family: Poetsen One; }
+
+.subtitulo {
+  font-weight: bold;
+  font-size: 0.5em; }
+
+.footer-estilo {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.075);
+  margin-top: 3%; }
+
+/*Estilos por ID*/
+#logo {
+  height: auto;
+  width: auto;
+  max-width: 5em;
+  max-height: 5em; }
+
+/* Estilo del login */
+.wrapper {
+  margin-top: 45px; }
+
+.form-signin {
+  max-width: 420px;
+  padding: 30px 38px 66px;
+  margin: 0 auto;
+  border: 1px solid #cccccc; }
+
+.input-group {
+  height: 45px;
+  margin-bottom: 15px;
+  border-radius: 0px;
+  color: #60B99A; }
+
+.form-control {
+  height: 45px;
+  color: #60B99A; }
+
+.input-group:hover span i {
+  color: #60B99A; }
+
+.btn-block {
+  border-radius: 0px;
+  margin-top: 25px;
+  background-color: #60B99A;
+  border: none; }
+
+.btn-block:hover {
+  background-color: #D3CE3D; }
+
+.bol {
+  position: relative;
+  margin-top: -40px;
+  color: #60B99A; }
+
+/* FONTS */
+@font-face {
+  font-family: "Poetsen One";
+  font-style: normal;
+  font-weight: 400;
+  src: local("?"), url("../fonts/PoetsenOne-Regular.woff2") format("woff2"), url("../fonts/PoetsenOne-Regular.ttf") format("truetype");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000; }
+
+/*# sourceMappingURL=mystyle.css.map */
