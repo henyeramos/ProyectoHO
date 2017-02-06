@@ -3,4 +3,4 @@ Una aplicacion hecha bajo el framework de CakePHP.
 
 Proyecto HO de un control de inventario.
 
-Trabajo.
+En proceso... 10%.
