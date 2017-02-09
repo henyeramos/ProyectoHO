@@ -10,7 +10,7 @@
                     <tr>
                         <th scope="col"><?= $this->Paginator->sort('id_user', 'ID') ?></th>
                         <th scope="col"><?= $this->Paginator->sort('username', 'Usuario') ?></th>
-                        <th scope="col"><?= $this->Paginator->sort('per_cedula', 'Cedula') ?></th>
+                        <th scope="col"><?= $this->Paginator->sort('user_cedula', 'Cedula') ?></th>
                         <th scope="col" class="actions"><?= __('Acciones') ?></th>
                     </tr>
                 </thead>
@@ -20,11 +20,11 @@
                     <tr>
                         <td><?= $this->Number->format($user->id_user) ?></td>
                         <td><?= h($user->username) ?></td>
-                        <td><?= $this->Number->format($user->per_cedula, ['locale' => 'es_ES']) ?></td>
+                        <td><?= $this->Number->format($user->user_cedula, ['locale' => 'es_ES']) ?></td>
                         <td class="actions">
-                            <?= $this->Html->link(__('View'), ['action' => 'view', $user->id_user], ['class' => 'btn btn-sm btn-info']) ?>
-                            <?= $this->Html->link(__('Edit'), ['action' => 'edit', $user->id_user], ['class' => 'btn btn-sm btn-info']) ?>
-                            <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $user->id_user], ['class' => 'btn btn-sm btn-danger'], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id_user)]) ?>
+                            <?= $this->Html->link(__('Ver'), ['action' => 'view', $user->id_user], ['class' => 'btn btn-sm btn-info']) ?>
+                            <?= $this->Html->link(__('Editar'), ['action' => 'edit', $user->id_user], ['class' => 'btn btn-sm btn-info']) ?>
+                            <?= $this->Form->postLink(__('Eliminar'), ['action' => 'delete', $user->id_user], ['confirm' => __('Esta seguro que desea eliminar al usuario bajo el numero de cedula {0}?', $user->user_cedula), 'class' => 'btn btn-sm btn-danger']) ?>
                         </td>
                     </tr>
                     <?php endforeach; ?>

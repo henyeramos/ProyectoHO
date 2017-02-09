@@ -33,6 +33,10 @@ class PersonaTable extends Table
         $this->table('persona');
         $this->displayField('per_cedula');
         $this->primaryKey('per_cedula');
+
+        $this->hasMany('Users', [
+            'foreignKey' => 'user_cedula'
+            ]);
     }
 
     /**

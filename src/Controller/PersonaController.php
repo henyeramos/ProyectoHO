@@ -68,10 +68,14 @@ class PersonaController extends AppController
 			//debug($this->request->data);
 
 			//Para validar correctamente los datos
-			$users = $this->Persona->patchEntity($users, $this->request->data);
+			$users = $this->Persona->patchEntity($users, $this->request->data, [
+                'associated' => [
+                    'Users'
+                ]
+            ]);
 
 			//$this->Persona->save($users) es el que se encarga de registrar en la base de datos
-			if ($this->Persona->save($users)) 
+			if ($this->Persona->save($users, array('deep' => true))) 
 			{
 				//Lanzar mensaje de exito
 				$this->Flash->success('Registro exitoso.');

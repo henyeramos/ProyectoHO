@@ -52,6 +52,10 @@ class UsersController extends AppController
 				$this->Flash->error('Datos invalidos, por favor intente de nuevo', ['key' => 'auth']);
 			}
 		}
+
+		if ($this->Auth->user()) {
+			return $this->redirect(['controller' => 'Users', 'action' => 'home']);
+		}
 	}
 
 	public function index()
@@ -63,12 +67,19 @@ class UsersController extends AppController
 	public function home()
 	{
 		$this->render();
+		$ced = $this->Auth->user('user_cedula');
+		$query = $this->Users->find('all')->contain(['Persona']);
+		$query->where(['per_cedula =' => $ced]);
+		 foreach ($query as $user) {
+		     debug($user->persona->per_nombre);
+		}
 	}
 
 	public function add()
 	{
 		//Para crear una nueva entidad, Persona es el nombre de la tabla
 		$users = $this->Users->newEntity();
+		
 
 		//Validacion por POST, el request ayuda a manejar toda la peticion enviando los datos atraves del formulario hacia la accion add
 		if ($this->request->is('post')) 
@@ -99,10 +110,50 @@ class UsersController extends AppController
 		$this->set(compact('users'));
 	}
 
+	public function edit($id = null)
+	{
+		$user = $this->Users->get($id);
+
+		if ($this->request->is(['patch', 'post', 'put'])) 
+		{
+			$user = $this->Users->patchEntity($user, $this->request->data);
+
+			if ($this->Users->save($user)) {
+				$this->Flash->success('El usuario ha sido modificado');
+				return $this->redirect(['action' => 'index']);
+			}
+			else
+			{
+				$this->Flash->error('El usuario no pudo ser modificado, porfavor intente nuevamente.');
+			}
+		}
+
+		$this->set(compact('user'));
+	}
+
+	public function delete($id = null)
+	{
+		$this->request->allowMethod(['post', 'delete']);
+
+		$user = $this->Users->get($id);
+
+		if ($this->Users->delete($user))
+		{
+			$this->Flash->success('Usuario eliminado.');
+		}
+		else
+		{
+			$this->Flash->error('Error al eliminar el registro');
+		}
+
+		return $this->redirect(['action' => 'index']);
+	}
+
 	public function view($id)
 	{
 		$user = $this->Users->get($id);
-		$this->set('user', $user);
+
+		$this->set(compact('user'));
 	}
 
 	public function prohibido()

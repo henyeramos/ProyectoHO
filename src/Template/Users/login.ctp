@@ -5,7 +5,7 @@
 
                     <div class="row text-center bol"><i class="glyphicon glyphicon-stop"></i></div>
                     <h3 class="form-signin-heading img-responsive text-center">
-                        <img id="logo" src="../img/inv.png" alt=""/>
+                        <img id="logo" src="img/inv.png" alt=""/>
                         <div class="caption">
                           <p>Proyecto HR</p>
                           <p class="subtitulo">Control de Inventario</p>

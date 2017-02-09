@@ -1,15 +1,15 @@
 <div class="row">
     <div class="col-md-6 col-md-offset-3">
         <div class="page-header">
-            <h2>Registrar usuario</h2>
+            <h2>Editar usuario</h2>
         </div>
             <!-- Formulario -->
-            <?= $this->Form->create($users, ['novalidate']) ?>
+            <?= $this->Form->create($user, ['novalidate']) ?>
             <fieldset>
                 <?= $this->element('Users/fields') ?>
             </fieldset>
 
-            <?= $this->Form->button('Registrar') ?>
+            <?= $this->Form->button('Modificar') ?>
             <?= $this->Form->end() ?>
         
     </div>

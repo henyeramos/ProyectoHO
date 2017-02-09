@@ -27,4 +27,5 @@ class Persona extends Entity
         '*' => true,
         'per_cedula' => true
     ];
+
 }

@@ -34,6 +34,11 @@ class UsersTable extends Table
         $this->displayField('id_user');
         $this->primaryKey('id_user');
 
+        $this->belongsTo('Persona', [
+            'joinType' => 'INNER',
+            'foreignKey' => 'user_cedula'
+            ]);
+
     }
 
     /**
@@ -50,20 +55,22 @@ class UsersTable extends Table
 
         $validator
             ->requirePresence('username', 'create')
-            ->notEmpty('username');
+            ->notEmpty('username', 'Rellene este campo');
 
         $validator
             ->requirePresence('password', 'create')
-            ->notEmpty('password');
+            ->notEmpty('password', 'Rellene este campo', 'create');
 
         $validator
             ->integer('isAdmin')
             ->allowEmpty('isAdmin');
 
         $validator
+            ->minLength('user_cedula', 7, 'El numero minimo de caracteres es 7.')
+            ->maxLength('user_cedula', 8, 'El numero maximo de caracteres es 8.')
             ->integer('user_cedula')
             ->requirePresence('user_cedula', 'create')
-            ->notEmpty('user_cedula');
+            ->notEmpty('user_cedula', 'Rellene este campo');
 
         return $validator;
     }
@@ -77,9 +84,20 @@ class UsersTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->isUnique(['username']));
+        $rules->add($rules->isUnique(['username'], 'Este usuario ya existe'));
 
         return $rules;
+    }
+
+    public function beforeDelete(Event $event, $entity, $options) 
+    {
+        //Para validar que no elimine usuarios del tipo Admin
+        if ($entity->isAdmin == 1) 
+        {
+            return false;
+        }
+
+        return true; 
     }
 
     public function findAuth(\Cake\ORM\Query $query, array $options)
@@ -89,4 +107,11 @@ class UsersTable extends Table
 
         return $query;
     }
+
+    public function recoverPassword($id)
+    {
+        $user = $this->get($id);
+        return $user->password;
+    }    
+    
 }

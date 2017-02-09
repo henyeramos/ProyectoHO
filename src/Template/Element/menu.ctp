@@ -17,9 +17,8 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Menu <span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu">
-                                    <li><?= $this->Html->link('Listar personas', ['controller' => 'Persona', 'action' => 'index']); ?></li>
                                     <li><?= $this->Html->link('Listar usuarios', ['controller' => 'Users', 'action' => 'index']); ?></li>
-                                    <li><?= $this->Html->link('Registrar persona', ['controller' => 'Persona', 'action' => 'add']); ?></li>
+                                    <li><?= $this->Html->link('Registrar usuario', ['controller' => 'Users', 'action' => 'add']); ?></li>
                                 </ul>
                             </li>
                         </ul>

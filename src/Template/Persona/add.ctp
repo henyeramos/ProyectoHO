@@ -10,7 +10,11 @@
                     echo $this->Form->input('per_cedula', array('type' => 'text', 'label' => 'Cedula', 'required' => 'required'));
                     echo $this->Form->input('per_nombre', array('label' => 'Nombre'));
                     echo $this->Form->input('per_apellido', array('label' => 'Apellido'));
-                ?>
+                    ?><hr>
+                    <?php 
+                    echo $this->Form->input('users.username', array('label' => 'Usuario'));
+                    echo $this->Form->input('users.password', array('label' => 'Contraseña'));
+                    ?>             
             </fieldset>
 
             <?= $this->Form->button('Registrar') ?>
